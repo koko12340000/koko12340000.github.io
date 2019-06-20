@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Programming team project!</title>
+    <style>
+    #video {
+        position : fixed;
+        top : 0;
+        left : 0;
+        min-width: 100%;
+        min-height: 100%;
+        width : auto;
+        height : auto;
+        z-index: -1;
+        pointer-events: none;
+    }
+   
+    </style>
+<link rel="stylesheet" href="style1.css">
+</head>
+<body>
+<iframe width="1280" height="720" id="video" src="https://www.youtube.com/embed/kizQcI7aMqc?amp;autoplay=1&loop=1;playlist=kizQcI7aMqc" 
+frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div id="head">
+    <span id="userWelcome">
+    </span>
+    <input type="text" id="user"/>
+    <input type="password" id="pass"/>
+    <button id="login">Login</button>
+    <button id="signup">Sign-up</button>
+    <button id="logout">Logout</button>
+</div>
+<script>
+document.getElementById('logout').style.visibility = 'hidden';
+
+</script>
+<h1>Welcome to Web Programming Team Project Page!</h1>
+<h1>If the video does not play, try refreshing the web page.</h1>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

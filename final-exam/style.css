@@ -1,0 +1,36 @@
+#login {
+    display: none;
+}
+#signup {
+    display: none;
+}
+
+#map {
+    position: absolute;
+    top:50px;
+    left: 500px;
+}
+
+#Save {
+    position: absolute;
+    width: 340px;
+    height: 30px;
+}
+
+#tableList {
+    position: absolute;
+    top: 570px;
+}
+
+#music {
+    display: none;
+}
+
+#explain { 
+    position: absolute;
+    top: 50px;
+    right: 15px;
+    width: 300px;
+    height: 300px;
+}
+

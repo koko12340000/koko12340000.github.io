@@ -1,0 +1,73 @@
+#main {
+    border:1px solid #aaa;
+    width:600px;
+    min-height:500px;
+    margin:auto;
+}
+
+#entry {
+    font-size:1.2em;
+}
+
+#entry div {
+    text-align: right;
+    width:500px;
+    margin:auto;
+}
+
+#entry div input{
+    padding:5px;
+    width:300px;
+    margin-bottom:5px;
+}
+#entry div button {
+    padding:5px;
+    min-width:100px;
+}
+
+#datax tr:nth-child(odd){
+    background-color:#aaf;
+}
+
+#datax tr:nth-child(even) {
+    background-color:#faa;
+}
+
+.text-center{
+    text-align:center;
+}
+
+
+svg {
+    background-color:red;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 4s;
+}
+@-webkit-keyframes example {
+    from {background-color: red;}
+    to {background-color: yellow;}
+  }
+  
+  /* Standard syntax */
+  @keyframes example {
+    from {background-color: red;}
+    to {background-color: yellow;}
+  }
+
+.good {
+    fill: transparent;
+    stroke-dasharray: 200 540;
+    stroke-dashoffset: -450;
+    stroke-width: 50px;
+    stroke: black;
+}
+
+svg text {
+    font-size: 29px;
+    display: inline-block;
+}
+
+
+

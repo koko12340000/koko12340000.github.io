@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <span id="userWelcome"></span>
+    <!--
+        <button id="login">Login</button>
+    -->   
+    <button id="signup">Sign-up</button>
+    <button id="logout">Logout</button>
+    <!-- <iframe src="http://townsquare.media/site/189/files/2011/12/mariahcarey-alliwantforchristmasisyou.mp3" allow="autoplay" id="music">
+        </iframe> -->
+   
+                    <h3>Welcome to Web Programming Team Project!</h3>
+                    Find places: <input type="text" placeholder="Find places" id="addressinput" size="20"/>
+                    <input type="button" id="Button1" value="Find" onclick="return Button1_onclick()"/><br>
+                    Latitude:<input type="text" id="lati" placeholder="Latitude" value="" size="20"><br>
+                    Longitude:<input type="text" id="long" placeholder="Longitude" value="" size="20"><br>
+                    <!--
+                      <input type="text" id = "lat_lng"/><br>
+                      -->
+                      Your Name:<input type="text" placeholder="Your Name" id="name"/><br>
+                      Your age:<input type="age"  placeholder="Your age" id="userage"/><br>
+                      When:<input type="date"  id='when' placeholder="When" value=""/><br>        
+                      Place name:<input type="text"  placeholder="Place Name" id="address"/><br>
+                      <!--
+                      Photo:<input type="file" id="submit" value="select"/><br>    
+                      -->
+                      
+                      How good is it?:<select id="type"> +
+                        <option name='good' SELECTED>good</option>
+                        <option value='not bad'>not bad</option>
+                        <option value='bad'>bad</option>
+                        </select> </td></tr><br>
+                      <tr><td>Comment:<br><textarea name = "comment" id = 'comment'cols = "50" rows = "5" placeholder = "Please write your opinion about the place you visited"></textarea></td></tr>
+                      <tr><br><td><input type='button' value='Save' id = 'Save'/>
+                       </td><br><br>
+        <table id="tableList" border="1">
+            <tr><th>Name</th><th>Lati</th><th>long</th><th>userage</th><th>when</th><th>address</th><th>type</th><th>comment</th></tr>
+        </table>
+        <div id="map" style="height:500px; width:700px;"></div>
+        <textarea id="explain">I created an information-sharing site for tourists.People who have been on a trip post information about the trip. The information is available to other travellers.When you insert a place you've traveled to Find places and press Find, it automatically loads latitude and longitude.You can write freely about the place where you went on the trip in the comment.When you press the save button, it will be saved in the Firebase, and when you refresh Webpage, you will see the information you saved on Google Maps.
+        </textarea>
+        <script>
+            var map;
+    var marker;
+    var infowindow;
+    var geocoder;
+    
+    function initMap() {
+        var south_korea = {lat: 36.7982029, lng: 127.6297671};
+        var myOptions = {
+            zoom: 8,
+            center: south_korea,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map"), myOptions,{
+        });
+        marker = new google.maps.Marker({map:map});
+            map.addListener("click", function(stark){
+            latLng = stark.latLng;
+            a = document.getElementById("lati");
+            b = document.getElementById("long");
+            a.value = latLng.lat();
+            b.value = latLng.lng();
+           
+            marker.setPosition(latLng);
+            //map.setCenter(latLng);
+        });
+    }
+
+    var marker; 
+    var infowindow;
+   
+    function FindLocation() {
+        geocoder = new google.maps.Geocoder();
+        initMap();
+        var address = document.getElementById("addressinput").value;
+        geocoder.geocode({'address':address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK)
+            {
+                 marker = new google.maps.Marker(
+                     
+                 {
+                    map: map,
+                    position: results[0].geometry.location
+                });
+                document.getElementById("lati").value = results[0].geometry.location.lat();
+                document.getElementById("long").value = results[0].geometry.location.lng();
+                
+                /*
+                infowindow = new google.maps.InfoWindow({   
+                    content:content
+                });
+                */
+                marker.addListener('click', ()=>infowindow.open(map,marker));
+                /*
+                document.getElementById("lat_lng").value = results[0].geometry.location;          
+                */
+                /*
+                $("#addressinput").click(function() {
+                    moveToLocation(result[0].geometry.location); 
+                });
+                */
+            }
+            else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        })
+    }
+                /*
+                function moveToLocation(lat, lng) {
+                var center = new google.maps.LatLng(lat, lng);
+                map.panTo(center);
+                 }
+                 */
+    function Button1_onclick() {
+        FindLocation();
+    }
+        </script>
+   
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7AgHbAQllxxTo5IwiQYOCC3r-DlZQnKY&callback=initMap"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script src="app1.js"></script>
+</body>
+</html>
